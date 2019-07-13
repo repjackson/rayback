@@ -12,7 +12,7 @@ template(name='videos')
             .twelve.wide.column
                 .ui.centered.three.cards
                     each video_items
-                        +video_item
+                        +video_card_template
                         
                         
                         
@@ -53,7 +53,7 @@ template(name='video_edit')
     with current_doc
         .ui.padded.stackable.grid.header-wrapper
             .row
-                .five.wide.column
+                .six.wide.column
                     .ui.inline.header #{title}
                     a.ui.large.basic.icon.button(href="/video/#{_id}")
                         i.big.green.checkmark.icon
@@ -62,6 +62,6 @@ template(name='video_edit')
                     +text_edit key='title' icon='header' direct=true
                     +array_edit key='tags' icon='tags' direct=true
                     +array_edit key='location_tags' label='location tags' icon='marker' direct=true
-                .six.wide.column
+                .ten.wide.column
                     +youtube_edit key='youtube_id' label='youtube id' direct=true
                     +html_edit key='description' direct=true

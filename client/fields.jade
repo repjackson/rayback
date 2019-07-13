@@ -131,7 +131,7 @@ template(name='image_view')
         //-     |#{key}
         //- else
         //-     |#{this}
-        img.ui.centered.rounded.image.invert(src="{{c.url field_value gravity='face' crop='fit'}}" class=classes)
+        img.ui.centered.rounded.image(src="{{c.url field_value gravity='face' crop='fit'}}" class=classes)
         //- img.ui.centered.rounded.image(src="{{c.url field_value gravity='face' crop='fit'}}" class=classes)
         //- a(href="{{c.url field_value gravity='face' crop='fit'}}")
         //-     |download
@@ -831,14 +831,14 @@ template(name='youtube_edit')
             |Youtube Id
         input.youtube_id(type='text' value=field_value placeholder=placeholder autocomplete="off")
     if field_value
-        iframe.invert(width='560' height='315' src="https://www.youtube.com/embed/#{field_value}" frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
+        iframe(width='560' height='315' src="https://www.youtube.com/embed/#{field_value}" frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
 
 template(name='youtube_view')
     if field_value
         if icon
             +i name=icon
             //- i.icon(class=icon)
-        .ui.embed.invert(data-source="youtube" data-id=field_value)
+        .ui.embed(data-source="youtube" data-id=field_value)
 
         //- // iframe(width='560' height='315' src="https://www.youtube.com/embed/#{field_value}" frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')
         //- iframe(src="https://www.youtube.com/embed/#{field_value}" frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen='')

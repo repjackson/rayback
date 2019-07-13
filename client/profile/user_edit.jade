@@ -24,7 +24,6 @@ template(name='user_edit')
                 .column
                     +text_edit key='first_name' label='first name' icon='header' direct=true
                     +text_edit key='last_name' label='last name' icon='text' direct=true
-                    +text_edit key='address' label='address' icon='marker' direct=true
                     .ui.segment
                         .ui.header 
                             i.blue.envelope.icon
@@ -37,12 +36,6 @@ template(name='user_edit')
                 .column
                     +text_edit key='spirit_animal' label='spirit animal' icon='year-of-monkey' direct=true
                     +link_edit key='link' label='link' icon='link' direct=true
-                    .ui.header money
-                    +boolean_edit key='accepts_cash' label='accepts cash' direct=true
-                    +boolean_edit key='accepts_venmo' label='accepts venmo' direct=true
-                    +boolean_edit key='accepts_paypal' label='accepts paypal' direct=true
-                    +text_edit key='payment_preferences' label='payment preference(s)' direct=true
-                    +image_edit key='venmo_qr' label='venmo qr code' direct=true
                     
 template(name='user_model_editor')
     .ui.header profile sections

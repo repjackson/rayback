@@ -31,7 +31,7 @@ template(name='model_edit')
                         i.plus.green.icon
                     .ui.styled.fluid.accordion
                         each fields
-                            .title 
+                            .active.title 
                                 |#{rank}
                                 +i name=icon classes='ui avatar image'
                                 //- i.icon(class=icon)
@@ -120,7 +120,7 @@ template(name='model_view')
 
 
 template(name='field_edit')
-    .content
+    .active.content
         +text_edit key='title' direct=true label='title'        
         +text_edit key='key'  direct=true label='key'           
         //- +text_edit key='field_type' direct=true label='Field Type'              

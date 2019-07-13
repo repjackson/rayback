@@ -8,7 +8,7 @@ template(name='gallery')
                 .scrolling
                     .ui.centered.four.stackable.cards
                         each images
-                            +image_item
+                            +image_card_template
                             
                             
 template(name='image_card_template')
@@ -58,7 +58,7 @@ template(name='image_edit_page')
     with current_doc
         .ui.padded.stackable.grid.header-wrapper
             .row
-                .five.wide.column
+                .six.wide.column
                     .ui.inline.header #{title}
                     a.ui.large.basic.icon.button(href="/image/#{_id}")
                         i.big.green.checkmark.icon
@@ -68,6 +68,6 @@ template(name='image_edit_page')
                     +array_edit key='tags' icon='tags' direct=true
                     +array_edit key='location_tags' label='location tags' icon='marker' direct=true
                     +array_edit key='date_tags' label='date tags' icon='calendar' direct=true
-                .six.wide.column
+                .ten.wide.column
                     +image_edit key='image_id' direct=true
                     +html_edit key='description' direct=true

@@ -25,6 +25,11 @@ if Meteor.isClient
             Meteor.call 'set_facets', 'all', ->
                 Session.set 'loading', false
 
+        'click .set_meal': ->
+            Session.set 'loading', true
+            Meteor.call 'set_facets', 'meal', ->
+                Session.set 'loading', false
+
         'click .set_bookmarked_model': ->
             Session.set 'loading', true
             Meteor.call 'set_facets', @slug, ->
@@ -50,7 +55,7 @@ if Meteor.isClient
         # @autorun -> Meteor.subscribe 'current_session'
         # @autorun -> Meteor.subscribe 'my_cart'
 
-        @autorun -> Meteor.subscribe 'bookmarked_models'
+        # @autorun -> Meteor.subscribe 'bookmarked_models'
         # @autorun -> Meteor.subscribe 'unread_messages'
 
     Template.nav.helpers
