@@ -42,14 +42,14 @@ template(name='user_layout')
                 .twelve.wide.column.shadowed-box
                     a.ui.icon.button(href="/user/#{username}" class="{{isActiveRoute 'user_about'}}" title='info')
                         +i name='info'
-                    a.ui.icon.button(href="/user/#{username}/dashboard" class="{{isActiveRoute 'user_dashboard'}}" title='info')
-                        +i name='dashboard'
+                    //- a.ui.icon.button(href="/user/#{username}/dashboard" class="{{isActiveRoute 'user_dashboard'}}" title='info')
+                    //-     +i name='dashboard'
                     a.ui.icon.button(href="/user/#{username}/social" class="{{isActiveRoute 'user_social'}}" title='social')
                         +i name='collaboration'
-                    a.ui.icon.button(href="/user/#{username}/documents" class="{{isActiveRoute 'user_documents'}}" title='documents')
-                        +i name='documents'
-                    a.ui.icon.button(href="/user/#{username}/products" class="{{isActiveRoute 'user_products'}}" title='shop')
-                        +i name='shop'
+                    //- a.ui.icon.button(href="/user/#{username}/documents" class="{{isActiveRoute 'user_documents'}}" title='documents')
+                    //-     +i name='documents'
+                    //- a.ui.icon.button(href="/user/#{username}/products" class="{{isActiveRoute 'user_products'}}" title='shop')
+                    //-     +i name='shop'
                     a.ui.icon.button(href="/user/#{username}/gallery" class="{{isActiveRoute 'user_gallery'}}" title='gallery')
                         +i name='gallery'
                     a.ui.icon.button(href="/user/#{username}/bookmarks" class="{{isActiveRoute 'user_bookmarks'}}" title='bookmarks')
@@ -62,16 +62,16 @@ template(name='user_layout')
                         +i name='meeting'
                     a.ui.icon.button(href="/user/#{username}/tags" class="{{isActiveRoute 'user_tags'}}" title='tags')
                         +i name='tags'
-                    a.ui.icon.button(href="/user/#{username}/requests" class="{{isActiveRoute 'user_requests'}}" title='requests')
-                        +i name='request-service'
+                    //- a.ui.icon.button(href="/user/#{username}/requests" class="{{isActiveRoute 'user_requests'}}" title='requests')
+                    //-     +i name='request-service'
                     a.ui.icon.button(href="/user/#{username}/votes" class="{{isActiveRoute 'user_votes'}}" title='votes')
                         +i name='elections'
-                    a.ui.icon.button(href="/user/#{username}/karma" class="{{isActiveRoute 'user_karma'}}" title='karma')
-                         +i name='heart-with-pulse'
-                    a.ui.icon.button(href="/user/#{username}/payment" class="{{isActiveRoute 'user_payment'}}" title='payment options')
-                         +i name='online-payment-with-a-credit-card'
-                    a.ui.icon.button(href="/user/#{username}/transactions" class="{{isActiveRoute 'user_transactions'}}" title='money')
-                         +i name='money'
+                    //- a.ui.icon.button(href="/user/#{username}/karma" class="{{isActiveRoute 'user_karma'}}" title='karma')
+                    //-      +i name='heart-with-pulse'
+                    //- a.ui.icon.button(href="/user/#{username}/payment" class="{{isActiveRoute 'user_payment'}}" title='payment options')
+                    //-      +i name='online-payment-with-a-credit-card'
+                    //- a.ui.icon.button(href="/user/#{username}/transactions" class="{{isActiveRoute 'user_transactions'}}" title='money')
+                    //-      +i name='money'
                     a.ui.icon.button(href="/user/#{username}/notifications" class="{{isActiveRoute 'user_notifications'}}" title='money')
                          +i name='appointment-reminders'
                     +yield

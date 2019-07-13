@@ -25,9 +25,19 @@ if Meteor.isClient
             Meteor.call 'set_facets', 'all', ->
                 Session.set 'loading', false
 
-        'click .set_meal': ->
+        'click .set_food': ->
             Session.set 'loading', true
-            Meteor.call 'set_facets', 'meal', ->
+            Meteor.call 'set_facets', 'food', ->
+                Session.set 'loading', false
+
+        'click .set_food_truck': ->
+            Session.set 'loading', true
+            Meteor.call 'set_facets', 'food_truck', ->
+                Session.set 'loading', false
+
+        'click .set_drinks': ->
+            Session.set 'loading', true
+            Meteor.call 'set_facets', 'drink', ->
                 Session.set 'loading', false
 
         'click .set_bookmarked_model': ->
@@ -73,6 +83,9 @@ if Meteor.isClient
                 to_username:Meteor.user().username
                 read_by_ids:$nin:[Meteor.userId()]
             }).count()
+
+        loading_class: ->
+            if Session.get('loading') then 'disabled' else ''
 
         cart_amount: ->
             cart_amount = Docs.find({

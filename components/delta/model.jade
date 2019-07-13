@@ -31,7 +31,7 @@ template(name='model_edit')
                         i.plus.green.icon
                     .ui.styled.fluid.accordion
                         each fields
-                            .active.title 
+                            .title 
                                 |#{rank}
                                 +i name=icon classes='ui avatar image'
                                 //- i.icon(class=icon)
@@ -51,7 +51,7 @@ template(name='model_view')
                                 |#{current_model.title}
                         .divider
                             i.chevron.right.icon
-                        .active.section
+                        .section
                             if icon
                                 i.icon(class=icon)
                             if title
@@ -68,9 +68,11 @@ template(name='model_view')
                         a.ui.fluid.button(href="/m/#{model}/#{_id}/edit")
                             i.pencil.icon
                             |edit
-                    each model.actions
-                        +Template.dynamic template=this data=current_doc
-                    +user_list_toggle key='bookmark_ids' icon='bookmark' label='Bookmark' color='red'
+                    //- each model.actions
+                    //-     +Template.dynamic template=this data=current_doc
+                    +user_list_toggle key='bookmark_ids' icon='bookmark' label='bookmark' color='red'
+                    +voting_full
+                    +comments
                     +creation_info
                 .twelve.wide.column
                     .ui.header
@@ -120,7 +122,7 @@ template(name='model_view')
 
 
 template(name='field_edit')
-    .active.content
+    .content
         +text_edit key='title' direct=true label='title'        
         +text_edit key='key'  direct=true label='key'           
         //- +text_edit key='field_type' direct=true label='Field Type'              

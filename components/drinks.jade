@@ -1,0 +1,74 @@
+template(name='drinks')
+    .ui.padded.stackable.grid.header-wrapper
+        //- .ui.hidden.divider
+        //- .row
+        //-     .four.wide.column
+        //-         h1.ui.massive.inline.header 
+        //-             +i name='cocktail'
+        //-             |drinks
+        //-         .ui.icon.large.button.new_drink
+        //-             i.green.plus.icon
+        //-         +cloud filter='drink'
+        //-     .twelve.wide.column
+        //-         .ui.centered.three.cards
+        //-             each drink_items
+        //-                 +drink_card_template
+        .ui.padded.stackable.grid
+            each drink_categories
+                .four.wide.column
+                    .ui.segment
+                        .ui.header
+                            +i name=icon
+                            | #{title}
+                        
+                        
+                        
+template(name='drink_card_template')
+    .ui.link.card.drink_card
+        .image
+            +youtube_view key='youtube_id' label='youtube id' direct=true
+        .content
+            .header #{title}
+        .content
+            each tags
+                .ui.basic.label #{this}
+                
+                
+template(name='drink_page')
+    with current_doc
+        .ui.padded.stackable.grid.header-wrapper
+            .row
+                .twelve.wide.column
+                    h1.ui.header #{title}
+            .row
+                .four.wide.column
+                    if can_edit
+                        a.ui.icon.button(href="/drink/#{_id}/edit" title='edit')
+                            +i name='settings'
+                    +array_view key='tags' icon='tags' direct=true
+                    +array_view key='location_tags' label='location tags' icon='marker' direct=true
+                    +array_view key='date_tags' label='date tags' icon='drinks' direct=true
+                    div
+                    +voting
+                    +comments
+                .twelve.wide.column
+                    +youtube_view key='youtube_id' label='youtube id' direct=true
+                    +html_view key='description' direct=true
+
+
+template(name='drink_edit')
+    with current_doc
+        .ui.padded.stackable.grid.header-wrapper
+            .row
+                .six.wide.column
+                    .ui.inline.header #{title}
+                    a.ui.large.basic.icon.button(href="/drink/#{_id}")
+                        i.big.green.checkmark.icon
+                    .ui.basic.icon.button.delete_drink_item
+                        i.red.remove.icon
+                    +text_edit key='title' icon='header' direct=true
+                    +array_edit key='tags' icon='tags' direct=true
+                    +array_edit key='location_tags' label='location tags' icon='marker' direct=true
+                .ten.wide.column
+                    +youtube_edit key='youtube_id' label='youtube id' direct=true
+                    +html_edit key='description' direct=true

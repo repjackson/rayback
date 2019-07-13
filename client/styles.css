@@ -85,7 +85,7 @@ input{
         0px 7px rgba(88,88,88,1),
         0px 8px rgba(78,78,78,1),
         0px 10px 2px 0px rgba(128,128,128,.6); /* shadow */
-} */
+/* } */
 
 .button:active{
     -webkit-transform: translate(0, 5px) !important; /* depth of button press */
@@ -96,6 +96,9 @@ input{
 
 .button, .selector, .card{
   animation: fadein .75s;
+}
+.icon.loading.item{
+  animation: fadein 1s;
 }
 @keyframes fadein {
   from { opacity: 0}

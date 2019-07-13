@@ -28,7 +28,6 @@ Router.route '/tab', -> @render 'tab'
 Router.route '/admin', -> @render 'admin'
 Router.route '/dashboard', -> @render 'dashboard'
 Router.route '/games', -> @render 'games'
-Router.route '/deliveries', -> @render 'deliveries'
 
 Router.route '/library', (->
     @layout 'layout'
@@ -61,6 +60,11 @@ Router.route "/shop", (->
     @layout 'layout'
     @render 'shop'
     ), name:'shop'
+
+Router.route "/drinks", (->
+    @layout 'layout'
+    @render 'drinks'
+    ), name:'drinks'
 
 
 Router.route '/shop/:product_id/daily_calendar/:month/:day/:year/', -> @render 'product_day'

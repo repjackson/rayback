@@ -4,40 +4,36 @@ template(name='nav')
         //-     i.large.sidebar.icon
         if is_loading
             .icon.item
-                i.big.loading.grey.wine.bottle.icon
+                i.big.loading.grey.circular.food.icon
         else
             a.item(href='/home' class="{{isActivePath '/home'}}")
                 img.ui.tiny.image(src="{{c.url 'mza92t30buvsuc72ogks' width=200 height=200 gravity='face' crop='fill'}}")
                 //- i.sitemap.large.icon
-            if is_admin
-                a.item.set_model(href='/m/model' class="{{isActivePath '/m/model'}}")
-                    i.sitemap.large.icon
-            a.icon.item(href='/users' class="{{isActivePath '/users'}}")
-                +i name='conference-foreground-selected'
-            a.icon.item(href='/groups' class="{{isActivePath '/groups'}}")
-                +i name='groups'
-            if is_admin
-                a.icon.item.set_shop(href='/m/shop' class="{{isActivePath '/m/shop'}}")
-                    +i name='shop'
-                    //- i.shop.icon
-                    //- .mobile.hidden &nbsp; market
-            a.icon.item(href='/events' class="{{isActivePath '/events'}}" title='events')
-                +i name='calendar'
-            a.icon.item(href='/votes' class="{{isActivePath '/votes'}}" title='votes')
-                +i name='elections'
-            a.icon.item(href='/gallery' class="{{isActivePath '/gallery'}}")
-                +i name='gallery'
-            a.icon.item(href='/videos' class="{{isActivePath '/videos'}}" title='video')
-                +i name='video'
-            
-            a.icon.item.set_meal(href='/m/meal' class="{{isActivePath '/m/meal'}}" title='food')
-                +i name='food'
-            //- a.item.set_marketplace(href='/m/marketplace' class="{{isActivePath '/m/marketplace'}}")
-            //-     +i name='shop'
+        if is_admin
+            a.item.set_model(href='/m/model' class="{{isActivePath '/m/model'}} loading")
+                i.sitemap.large.icon
+        a.icon.item.set_food_truck(href='/m/food_truck' class="{{isActivePath '/m/food_truck'}} #{loading_class}" title='food')
+            +i name='food-truck'
+        //- a.icon.item.set_food(href='/m/food' class="{{isActivePath '/m/food'}}" title='food')
+        //-     +i name='meal'
+        a.icon.item.set_drinks(href='/m/drink' class="{{isActivePath '/m/drink'}} #{loading_class}" title='food')
+            +i name='beer'
+        //- a.icon.item(href='/groups' class="{{isActivePath '/groups'}} #{loading_class}")
+        //-     +i name='groups'
+        a.icon.item(href='/events' class="{{isActivePath '/events'}} #{loading_class}" title='events')
+            +i name='calendar'
+        a.icon.item(href='/drinks' class="{{isActivePath '/drinks'}} #{loading_class}" title='drinks')
+            +i name='cocktail'
+        a.icon.item(href='/gallery' class="{{isActivePath '/gallery'}} #{loading_class}")
+            +i name='gallery'
+        a.icon.item(href='/videos' class="{{isActivePath '/videos'}} #{loading_class}" title='video')
+            +i name='video'
+        //- a.item.set_marketplace(href='/m/marketplace' class="{{isActivePath '/m/marketplace'}}")
+        //-     +i name='shop'
         .right.menu
             if currentUser
-                //- .item
-                //-     .ui.header(title='your karma') #{currentUser.karma}
+                a.icon.item(href='/users' class="{{isActivePath '/users'}}")
+                    +i name='conference-foreground-selected'
                 unless logging_out
                     //- a.ui.icon.item(href="/user/#{currentUser.username}/notifications" class="{{isActiveRoute regex='notifications'}}")
                     //-     i.large.alarm.icon
@@ -48,19 +44,9 @@ template(name='nav')
                         //-     else 
                         //-         |no notifications
                     if is_user
-                        //- a.icon.item(href="/user/#{currentUser.username}" class="{{isActiveRoute regex='profile'}}")
-                        //-     +i name='new-post'
-                        //-     //- i.big.mail.icon(class=mail_icon_class title="#{unread_count} Unread")
                         //- a.icon.item(href="/chat" class="{{isActivePath '/chat'}}" title='chat')
                         //-     +i name='chat'
                             //- i.chat.large.icon
-                        //- a.item(href="/credit" class="{{isActivePath '/credit'}}" title="#{currentUser.credit} credit")
-                        //-      +i name='wallet'
-                        //-      |#{currentUser.credit}
-                        //- a.icon.item.new_item(href="#")
-                        //-     i.circular.plus.icon
-                        //- a.item(href="/cart" class="{{isActivePath '/cart'}}" title='cart')
-                        //-     |#{cart_amount}
                     //- if is_admin
                     //-     a.icon.item(href='/admin' class="{{isActivePath '/admin'}}")
                     //-         +i name='user shield'
@@ -70,7 +56,6 @@ template(name='nav')
                         //-     img.ui.inline.circular.tiny.image(src="{{c.url currentUser.image_id width=100 height=100 gravity='face' crop='fill'}}")
                         //- else
                         +i name='user' classes='ui inline mini image'
-                        //- i.user.icon
                         | #{currentUser.username}
                 if logging_out
                     .item
