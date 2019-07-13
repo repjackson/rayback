@@ -169,9 +169,6 @@ Template.html_edit.helpers
         }
 
 
-
-
-
 Template.image_edit.events
     "change input[name='upload_image']": (e) ->
         files = e.currentTarget.files
@@ -463,6 +460,23 @@ Template.number_edit.events
                 $set:"#{@key}":val
 
 
+Template.float_edit.events
+    'blur .edit_float': (e,t)->
+        if @direct
+            parent = Template.parentData()
+        else
+            parent = Template.parentData(5)
+        val = parseInt t.$('.edit_float').val()
+        doc = Docs.findOne parent._id
+        user = Meteor.users.findOne parent._id
+        if doc
+            Docs.update parent._id,
+                $set:"#{@key}":val
+        else if user
+            Meteor.users.update parent._id,
+                $set:"#{@key}":val
+
+
 
 Template.dollar_price_edit.events
     'blur .edit_price': (e,t)->
@@ -712,14 +726,34 @@ Template.textarea_view.onRendered ->
 
 
 Template.single_doc_view.onCreated ->
-    # @autorun => Meteor.subscribe 'model_docs', @data.ref_model
+    @autorun => Meteor.subscribe 'model_docs', @data.ref_model
 
 Template.single_doc_view.helpers
     choices: ->
         Docs.find
             model:@ref_model
 
+    single_doc_value: ->
+        # console.log @
+        # console.log Template.currentData()
+        parent = Template.parentData(5)
+        # console.log parent
+        referenced_doc = Docs.findOne(parent["#{@key}"])
+        if Template.instance().subscriptionsReady()
+            # console.log 'hi'
+            if referenced_doc
+                # console.log @key
+                # console.log referenced_doc
+                referenced_doc["#{@lookup_field}"]
 
+    single_doc_ref_doc: ->
+        # console.log @
+        # console.log Template.currentData()
+        parent = Template.parentData(5)
+        # console.log parent
+        referenced_doc = Docs.findOne(parent["#{@key}"])
+        if Template.instance().subscriptionsReady()
+            referenced_doc
 
 
 Template.single_doc_edit.onCreated ->
@@ -794,13 +828,13 @@ Template.single_doc_edit.events
     'click .select_doc': (e,t) ->
         page_doc = Docs.findOne Router.current().params.doc_id
         field = Template.currentData()
-        console.log field
-        console.log @
+        # console.log field
+        # console.log @
         if field.direct
             parent = Template.parentData()
         else
             parent = Template.parentData(7)
-        console.log parent
+        # console.log parent
 
         doc = Docs.findOne page_doc._id
         user = Meteor.users.findOne page_doc._id

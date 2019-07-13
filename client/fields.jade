@@ -527,6 +527,40 @@ template(name='number_view')
         strong &nbsp; #{field_value}
 
 
+template(name='float_edit')
+    div
+    .ui.tiny.header
+        if icon
+            +i name=icon
+            //- i.grey.icon(class=icon)
+        if title
+            |#{title}
+        else if label
+            |#{label}
+        else
+            |#{key}
+    .ui.fluid.input
+        //- +clear_value                
+        input.edit_float(type='number' step="0.1" value=field_value placeholder=placeholder autocomplete="off")
+
+template(name='float_view')
+    if field_value
+        div
+        .ui.tiny.header
+            if icon
+                +i name=icon
+                //- i.grey.icon(class=icon)
+            if title
+                |#{title}
+            else if label
+                |#{label}
+            else if key
+                |#{key}
+            else
+                |#{this}
+        strong &nbsp; #{field_value}
+
+
 template(name='karma_price_edit')
     div
     .ui.fluid.input
@@ -901,11 +935,13 @@ template(name='single_doc_view')
             //- i.icon(class=icon)
         .ui.tiny.inline.header(title=key)
             |#{title}
-        .ui.basic.label
-            if icon
-                +i name=icon
-                //- i.grey.icon(class=icon)
-            |#{field_value}
+        //- .ui.basic.label
+        //-     if icon
+        //-         +i name=icon
+        //-         //- i.grey.icon(class=icon)
+        //-     |#{field_value}
+    a.ui.button(href="/m/#{single_doc_ref_doc.model}/#{single_doc_ref_doc._id}/view")
+        |#{single_doc_value}
 
 
 template(name='single_doc_edit')
