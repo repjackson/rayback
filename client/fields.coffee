@@ -744,7 +744,7 @@ Template.single_doc_edit.helpers
             # console.log 'hi'
             if referenced_doc
                 # console.log @key
-                # console.log referenced_doc
+                console.log referenced_doc
                 referenced_doc["#{@lookup_field}"]
 
 
@@ -792,23 +792,23 @@ Template.single_doc_edit.events
                     t.doc_results.set res
 
     'click .select_doc': (e,t) ->
-        # page_doc = Docs.findOne Router.current().params.id
+        page_doc = Docs.findOne Router.current().params.doc_id
         field = Template.currentData()
         console.log field
         console.log @
         if field.direct
             parent = Template.parentData()
         else
-            parent = Template.parentData(5)
+            parent = Template.parentData(7)
+        console.log parent
 
-
-        doc = Docs.findOne parent._id
-        user = Meteor.users.findOne parent._id
+        doc = Docs.findOne page_doc._id
+        user = Meteor.users.findOne page_doc._id
         if doc
-            Docs.update parent._id,
+            Docs.update page_doc._id,
                 $set:"#{field.key}":@_id
         else if user
-            Meteor.users.update parent._id,
+            Meteor.users.update page_doc._id,
                 $set:"#{field.key}":@_id
 
         t.doc_results.set null

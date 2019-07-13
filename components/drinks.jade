@@ -1,4 +1,4 @@
-template(name='drinks')
+template(name='drink_categories')
     .ui.padded.stackable.grid.header-wrapper
         //- .ui.hidden.divider
         //- .row
@@ -20,6 +20,11 @@ template(name='drinks')
                         .ui.header
                             +i name=icon
                             | #{title}
+                        i.thumbs.up.icon
+                        |#{upvoters.length}
+                        div
+                        i.thumbs.down.icon
+                        |#{downvoters.length}
                         
                         
                         

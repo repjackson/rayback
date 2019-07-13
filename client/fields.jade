@@ -919,7 +919,7 @@ template(name='single_doc_edit')
         input#single_doc_input(type='text' placeholder='lookup doc...')
         each selections
             .ui.large.label
-                |#{first_name} #{last_name}
+                |#{first_name} #{last_name} #{title}
     if single_doc_value
         .ui.header #{single_doc_value}
     if doc_results
@@ -928,7 +928,7 @@ template(name='single_doc_edit')
                 each doc_results
                     .select_doc.item
                         h4.ui.header
-                            |#{first_name} #{last_name}
+                            |#{first_name} #{last_name} #{title}
     //- each choices
     //-     .ui.small.circular.compact.button.select_choice(class=choice_class)
     //-         if icon

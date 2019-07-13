@@ -61,10 +61,14 @@ Router.route "/shop", (->
     @render 'shop'
     ), name:'shop'
 
-Router.route "/drinks", (->
+Router.route "/drinks/:category_slug", (->
     @layout 'layout'
     @render 'drinks'
     ), name:'drinks'
+Router.route "/drink_categories", (->
+    @layout 'layout'
+    @render 'drink_categories'
+    ), name:'drink_categories'
 
 
 Router.route '/shop/:product_id/daily_calendar/:month/:day/:year/', -> @render 'product_day'

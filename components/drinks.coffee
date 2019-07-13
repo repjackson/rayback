@@ -1,9 +1,9 @@
 if Meteor.isClient
-    Template.drinks.onCreated ->
+    Template.drink_categories.onCreated ->
         @autorun -> Meteor.subscribe 'docs', selected_tags.array(), 'drink'
         @autorun -> Meteor.subscribe 'model_docs', 'drink_category'
 
-    Template.drinks.helpers
+    Template.drink_categories.helpers
         drink_items: ->
             Docs.find
                 model:'drink'
@@ -12,7 +12,7 @@ if Meteor.isClient
             Docs.find
                 model:'drink_category'
 
-    Template.drinks.events
+    Template.drink_categories.events
         'click .new_drink': ->
             new_id = Docs.insert
                 model:'drink'
