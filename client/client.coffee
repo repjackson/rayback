@@ -141,6 +141,10 @@ Template.registerHelper 'is_dev', () ->
     if Meteor.user() and Meteor.user().roles
         if 'dev' in Meteor.user().roles then true else false
 
+Template.registerHelper 'is_staff', () ->
+    if Meteor.user() and Meteor.user().roles
+        if 'staff' in Meteor.user().roles then true else false
+
 Template.registerHelper 'is_user', () ->
     if Meteor.user() and Meteor.user().roles
         if 'user' in Meteor.user().roles then true else false

@@ -18,7 +18,9 @@ head
 
 template(name='layout')
     +nav
-    +yield
+    .global_container
+        +yield
+    img.ui.fluid.image.checkin_banner(src="{{c.url 'raybackback' width=1000 height=1000 crop='crop'}}")
     //- if is_eric
     +footer 
 

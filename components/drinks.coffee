@@ -18,6 +18,19 @@ if Meteor.isClient
                 model:'drink'
             Router.go "/drink/#{new_id}/edit"
 
+    Template.drink_category.onCreated ->
+        @autorun -> Meteor.subscribe 'doc', Router.current().params.doc_id
+    Template.drink_category.helpers
+        category_drinks: ->
+            Docs.find
+                model:'drink'
+
+    Template.drink_category.events
+        'click .new_drink': ->
+            new_id = Docs.insert
+                model:'drink'
+            Router.go "/drink/#{new_id}/edit"
+
     Template.drink_card_template.events
         'click .drink_card': ->
             Docs.update @_id,

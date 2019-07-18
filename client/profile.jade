@@ -1,5 +1,6 @@
 template(name='user_layout')
     +nav
+    img.ui.fluid.image.checkin_banner(src="{{c.url 'raybackback' width=1000 height=1000 crop='crop'}}")
     with user_from_username_param
         .ui.padded.stackable.grid.global_container
             .ui.hidden.divider
@@ -13,6 +14,15 @@ template(name='user_layout')
                             h1.ui.large.center.aligned.header
                                 | #{user.first_name}
                                 | #{user.last_name}
+                    if checked_in
+                        .ui.big.green.fluid.button.checkout
+                            i.checkmark.icon
+                            |checked in
+                        +text_edit key='status_message' label='status message' direct=true
+                    else
+                        .ui.big.fluid.button.checkin 
+                            i.sign.in.icon
+                            |check in
                     .ui.center.aligned.small.grey.header
                         | #{user.tagline}
                     .ui.center.aligned.small.grey.header
@@ -46,10 +56,6 @@ template(name='user_layout')
                     //-     +i name='dashboard'
                     a.ui.icon.button(href="/user/#{username}/social" class="{{isActiveRoute 'user_social'}}" title='social')
                         +i name='collaboration'
-                    //- a.ui.icon.button(href="/user/#{username}/documents" class="{{isActiveRoute 'user_documents'}}" title='documents')
-                    //-     +i name='documents'
-                    //- a.ui.icon.button(href="/user/#{username}/products" class="{{isActiveRoute 'user_products'}}" title='shop')
-                    //-     +i name='shop'
                     a.ui.icon.button(href="/user/#{username}/gallery" class="{{isActiveRoute 'user_gallery'}}" title='gallery')
                         +i name='gallery'
                     a.ui.icon.button(href="/user/#{username}/bookmarks" class="{{isActiveRoute 'user_bookmarks'}}" title='bookmarks')
@@ -62,16 +68,10 @@ template(name='user_layout')
                         +i name='meeting'
                     a.ui.icon.button(href="/user/#{username}/tags" class="{{isActiveRoute 'user_tags'}}" title='tags')
                         +i name='tags'
-                    //- a.ui.icon.button(href="/user/#{username}/requests" class="{{isActiveRoute 'user_requests'}}" title='requests')
-                    //-     +i name='request-service'
+                    a.ui.icon.button(href="/user/#{username}/drinks" class="{{isActiveRoute 'user_drinks'}}" title='tags')
+                        +i name='beer'
                     a.ui.icon.button(href="/user/#{username}/votes" class="{{isActiveRoute 'user_votes'}}" title='votes')
                         +i name='elections'
-                    //- a.ui.icon.button(href="/user/#{username}/karma" class="{{isActiveRoute 'user_karma'}}" title='karma')
-                    //-      +i name='heart-with-pulse'
-                    //- a.ui.icon.button(href="/user/#{username}/payment" class="{{isActiveRoute 'user_payment'}}" title='payment options')
-                    //-      +i name='online-payment-with-a-credit-card'
-                    //- a.ui.icon.button(href="/user/#{username}/transactions" class="{{isActiveRoute 'user_transactions'}}" title='money')
-                    //-      +i name='money'
                     a.ui.icon.button(href="/user/#{username}/notifications" class="{{isActiveRoute 'user_notifications'}}" title='money')
                          +i name='appointment-reminders'
                     +yield

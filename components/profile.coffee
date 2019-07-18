@@ -52,6 +52,14 @@ if Meteor.isClient
         'click .logout_other_clients': ->
             Meteor.logoutOtherClients()
 
+        'click .checkin': ->
+            Meteor.users.update Meteor.userId(),
+                $set:checked_in:true
+
+        'click .checkout': ->
+            Meteor.users.update Meteor.userId(),
+                $set:checked_in:false
+
         'click .logout': ->
             Meteor.logout()
             Router.go '/login'

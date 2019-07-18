@@ -27,17 +27,49 @@ template(name='drink_categories')
                         |#{downvoters.length}
                         
                         
+template(name='drink_category')
+    with current_doc
+        .ui.padded.stackable.grid.header-wrapper
+            .row
+                .twelve.wide.column
+                    h1.ui.header
+                        +i name=icon
+                        |#{title}
+            .row
+                .four.wide.column
+                    if can_edit
+                        a.ui.icon.button(href="/drink/#{_id}/edit" title='edit')
+                            +i name='settings'
+                    +array_view key='tags' icon='tags' direct=true
+                    +array_view key='location_tags' label='location tags' icon='marker' direct=true
+                    +array_view key='date_tags' label='date tags' icon='drinks' direct=true
+                    div
+                    +voting
+                    +comments
+                .twelve.wide.column
+                    +youtube_view key='youtube_id' label='youtube id' direct=true
+                    +html_view key='description' direct=true
+
+
                         
 template(name='drink_card_template')
-    .ui.link.card.drink_card
-        .image
-            +youtube_view key='youtube_id' label='youtube id' direct=true
+    .ui.card
+        .image.drink_card.pointer
+            img.ui.image(src="{{c.url picture width=400 height=400 crop='fill'}}")
         .content
             .header #{title}
         .content
+            |location #{location}
             each tags
                 .ui.basic.label #{this}
-                
+        .content
+            div
+            |#{orders_today} orders today
+            div
+            |#{orders_total} orders total
+        .content
+            .ui.fluid.green.button.order_now
+                |order now        
                 
 template(name='drink_page')
     with current_doc

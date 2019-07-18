@@ -466,7 +466,7 @@ Template.float_edit.events
             parent = Template.parentData()
         else
             parent = Template.parentData(5)
-        val = parseInt t.$('.edit_float').val()
+        val = parseFloat t.$('.edit_float').val()
         doc = Docs.findOne parent._id
         user = Meteor.users.findOne parent._id
         if doc
@@ -816,9 +816,9 @@ Template.single_doc_edit.events
         t.user_results.set null
 
     'keyup #single_doc_input': (e,t)->
-        console.log @
+        # console.log @
         search_value = $(e.currentTarget).closest('#single_doc_input').val().trim()
-        console.log search_value
+        # console.log search_value
         if search_value.length > 1
             Meteor.call 'lookup_doc', @lookup_field, search_value, @ref_model, (err,res)=>
                 if err then console.error err

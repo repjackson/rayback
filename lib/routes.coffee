@@ -23,6 +23,7 @@ Router.route '/my_transactions', -> @render 'my_transactions'
 Router.route '/chat', -> @render 'view_chats'
 Router.route '/inbox', -> @render 'inbox'
 Router.route '/register', -> @render 'register'
+Router.route '/orders', -> @render 'orders'
 Router.route '/cart', -> @render 'cart'
 Router.route '/tab', -> @render 'tab'
 Router.route '/admin', -> @render 'admin'
@@ -281,6 +282,10 @@ Router.route '/user/:username/tags', (->
     @layout 'user_layout'
     @render 'user_tags'
     ), name:'user_tags'
+Router.route '/user/:username/drinks', (->
+    @layout 'user_layout'
+    @render 'user_drinks'
+    ), name:'user_drinks'
 Router.route '/user/:username/transactions', (->
     @layout 'user_layout'
     @render 'user_transactions'

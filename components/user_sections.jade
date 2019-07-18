@@ -29,6 +29,16 @@ template(name='user_votes')
         +i name='elections'
         |votes
 
+template(name='user_drinks')
+    .ui.header 
+        +i name='beer'
+    .ui.header 
+        i.thumbs.up.outline.icon
+        |liked drinks
+    .ui.header 
+        i.thumbs.down.outline.icon
+        |disliked drinks
+
 
 
 template(name='user_notifications')
