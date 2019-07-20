@@ -1,0 +1,67 @@
+template(name='staff')
+    .ui.padded.stackable.grid.header-wrapper
+        .row
+            .ui.four.wide.column
+                .ui.header 
+                    +i name='severity'
+                    |staff dashboard
+        .three.column.row
+            .column
+                +working_staff
+            .column
+                .ui.segment
+                    .ui.header 
+                        +i name='calendar'
+                        |events today
+            .column
+                .ui.segment
+                    .ui.header 
+                        +i name='megaphone'
+                        |alerts
+        .three.column.row
+            .column
+                +staff_tasks
+            .column
+                +staff_beer
+            .column
+                .ui.segment
+                    .ui.header 
+                        +i name='star'
+                        |brewery of the month
+        .row
+            .sixteen.wide.column
+                +view_chats
+
+
+template(name='staff_beer')
+    .ui.segment
+        .ui.header 
+            +i name='calendar'
+            |beer
+        .ui.small.header 86 list
+
+
+template(name='staff_tasks')
+    .ui.segment
+        //- a.ui.header(href='/tasks') 
+        a.ui.header(href='/m/task') 
+            +i name='tasks'
+            |tasks
+        +add_model_button model='task'
+        each tasks
+            .ui.small.header #{title}
+
+
+template(name='working_staff')
+    .ui.segment
+        .ui.header 
+            +i name='manager'
+            |staff working today
+        .ui.header 
+            +i name='clock-checked'
+            |checked in staff
+        .ui.items
+            each checked_in_staff
+                .item
+                    img.ui.avatar.image(src="{{c.url image_id width=1000 height=1000 gravity='face' crop='crop'}}")
+                    .content #{username}

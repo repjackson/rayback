@@ -8,7 +8,8 @@ if Meteor.isClient
 
 
     Template.user_table.events
-        'click #add_user': ->
+        'click #add_staff': ->
+            Router.go '/add_user'
 
     Template.user_role_toggle.helpers
         is_in_role: ->
@@ -27,20 +28,45 @@ if Meteor.isClient
 
 
 
-    # Template.article_list.onCreated ->
-    #     @autorun ->  Meteor.subscribe 'type', 'article'
-    #
-    #
-    # Template.article_list.helpers
-    #     articles: ->
-    #         Docs.find
-    #             model:'article'
-    #
-    # Template.article_list.events
-    #     'click .add_article': ->
-    #         Docs.insert
-    #             model:'article'
-    #
-    #     'click .delete_article': ->
-    #         if confirm 'Delete article?'
-    #             Docs.remove @_id
+    Template.add_user.onCreated ->
+        Session.set 'permission', false
+
+    Template.add_user.events
+        'keyup #last_name': (e,t)->
+            first_name = $('#first_name').val()
+            last_name = $('#last_name').val()
+            $('#username').val("#{first_name.toLowerCase()}_#{last_name.toLowerCase()}")
+            Session.set 'permission',true
+
+        'click .create_staff': ->
+            first_name = $('#first_name').val()
+            last_name = $('#last_name').val()
+            username = "#{first_name.toLowerCase()}_#{last_name.toLowerCase()}"
+            Meteor.call 'add_user', username, (err,res)=>
+                if err
+                    alert err
+                else
+                    Meteor.users.update res,
+                        $set:
+                            first_name:first_name
+                            last_name:last_name
+                            added_by_username:Meteor.user().username
+                            added_by_user_id:Meteor.userId()
+                            roles:['staff']
+                            # healthclub_checkedin:true
+                    Docs.insert
+                        model: 'log_event'
+                        object_id: res
+                        body: "#{username} was created"
+                    # Docs.insert
+                    #     model:'log_event'
+                    #     object_id:res
+                    #     body: "#{username} checked in."
+                    new_user = Meteor.users.findOne res
+                    Session.set 'username_query',null
+                    $('.username_search').val('')
+                    Router.go "/user/#{username}/edit"
+
+
+    Template.add_user.helpers
+        permission: -> Session.get 'permission'

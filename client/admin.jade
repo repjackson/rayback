@@ -5,16 +5,16 @@ template(name='admin')
 
 
 template(name='user_table')
-    a#add_user.ui.basic.button(href='/user/add')
+    #add_staff.ui.basic.button
         i.plus.icon
-        |Add User
+        |add staff
     table.ui.sortable.striped.table
         thead
             tr
-                th Image
-                th Profile
-                th Roles
-                th Actions
+                th image
+                th profile
+                th roles
+                th actions
         tbody
             each users
                 tr
@@ -45,3 +45,24 @@ template(name='user_role_toggle')
         .remove_role.ui.grey.button #{role}
     else
         .add_role.ui.basic.button #{role}
+
+
+template(name='add_user')
+    .ui.stackable.padded.grid
+        .centered.row
+            .eight.wide.column
+                h1.ui.center.aligned.header
+                    +i name='manager'
+                    | staff
+                .ui.big.form
+                    .field
+                        input#first_name(type='text' placeholder='first name' autocomplete='off')
+                    .field
+                        input#last_name(type='text' placeholder='last name' autocomplete='off')
+                    //- .field
+                    //-     |Username
+                    //-     input#username(type='text')
+                if permission
+                    .ui.fluid.green.big.button.create_staff
+                        |create user
+        

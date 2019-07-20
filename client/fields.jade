@@ -45,24 +45,24 @@ template(name='color_icon_edit')
             |#{this}
     input.color_icon(type='url' value=field_value placeholder='icons8 class' autocomplete="off")
     if field_value
-        img.ui.inline.image(src="https://img.icons8.com/color/48/000000/#{field_value}.png")
+        img.ui.inline.image(src="https://img.icons8.com/cotton/48/000000/#{field_value}.png")
 
 template(name='icon_edit')
     div
+    if icon
+        +ismall name=icon
+    .ui.tiny.inline.header
+            //- i.grey.icon(class=icon)
+        if title
+            |#{title}
+        else if key
+            |#{key}
+        else
+            |#{this}    
     .ui.right.icon.input
-        .ui.tiny.header
-            if icon
-                +ismall name=icon
-                //- i.grey.icon(class=icon)
-            if title
-                |#{title}
-            else if key
-                |#{key}
-            else
-                |#{this}    
         if field_value
             //- i.large.icon(class=field_value)
-            img(src="https://img.icons8.com/pastel-glyph/48/000000/#{field_value}.png")
+            img(src="https://img.icons8.com/cotton/48/000000/#{field_value}.png")
         input.icon_val(type='text' value=field_value placeholder='icon8 class' autocomplete="off")
 
 
@@ -74,7 +74,7 @@ template(name='icon_view')
     if field_value
         div
         //- i.icon(class=field_value)
-        img(src="https://img.icons8.com/pastel-glyph/48/000000/#{field_value}.png")
+        img(src="https://img.icons8.com/cotton/48/000000/#{field_value}.png")
 
 
 template(name='icolor')
@@ -82,7 +82,8 @@ template(name='icolor')
 
 template(name='i')
     //- img(src="https://img.icons8.com/color/48/000000/#{name}.png" class=classes title=title)
-    img(src="https://img.icons8.com/pastel-glyph/64/000000/#{name}.png" class=classes title=title)
+    img(src="https://img.icons8.com/cotton/128/000000/#{name}.png" class=classes title=title)
+    //- img(src="https://img.icons8.com/pastel-glyph/64/000000/#{name}.png" class=classes title=title)
     //- img(src="https://img.icons8.com/office/48/000000/#{name}.png" class=classes title=title)
     //- img(src="https://img.icons8.com/ultraviolet/48/000000/#{name}.png" class=classes title=title)
 
@@ -343,7 +344,7 @@ template(name='document_view')
 template(name='text_edit')
     if icon
         +ismall name=icon
-    .ui.tiny.header
+    .ui.tiny.inline.header
             //- i.grey.icon(class=icon)
         if title
             |#{title}

@@ -2,7 +2,7 @@ template(name='user_edit')
     with user_from_username_param          
         //- img.ui.fluid.image.banner_image(src="{{c.url banner_image_id width=1000 height=500 crop='crop'}}")    
         .ui.stackable.padded.grid
-            .three.column.row
+            .two.column.row
                 .column
                     .ui.center.aligned.large.inline.grey.header
                         | #{user_from_username_param.first_name} #{user_from_username_param.last_name}
@@ -33,8 +33,6 @@ template(name='user_edit')
                     +text_edit key='tagline' label='tag line' icon='signature' direct=true
                     +array_edit key='tags' label='tags' icon='tags' direct=true
                     +array_edit key='location_tags' label='location tags' icon='location' direct=true
-                .column
-                    +text_edit key='spirit_animal' label='spirit animal' icon='year-of-monkey' direct=true
                     +link_edit key='link' label='link' icon='link' direct=true
                     
 template(name='user_model_editor')

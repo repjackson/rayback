@@ -53,11 +53,13 @@ if Meteor.isClient
             Meteor.logoutOtherClients()
 
         'click .checkin': ->
-            Meteor.users.update Meteor.userId(),
+            current_user = Meteor.users.findOne username: Router.current().params.username
+            Meteor.users.update current_user._id,
                 $set:checked_in:true
 
         'click .checkout': ->
-            Meteor.users.update Meteor.userId(),
+            current_user = Meteor.users.findOne username: Router.current().params.username
+            Meteor.users.update current_user._id,
                 $set:checked_in:false
 
         'click .logout': ->

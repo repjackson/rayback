@@ -27,6 +27,7 @@ Router.route '/orders', -> @render 'orders'
 Router.route '/cart', -> @render 'cart'
 Router.route '/tab', -> @render 'tab'
 Router.route '/admin', -> @render 'admin'
+Router.route '/staff', -> @render 'staff'
 Router.route '/dashboard', -> @render 'dashboard'
 Router.route '/games', -> @render 'games'
 
@@ -116,10 +117,10 @@ Router.route '/model/edit/:doc_id', -> @render 'model_edit'
 
 # Router.route '/user/:username', -> @render 'user'
 # Router.route '/user/:username/m/:type', -> @render 'profile_layout', 'user_section'
-Router.route '/add_resident', (->
+Router.route '/add_user', (->
     @layout 'layout'
-    @render 'add_resident'
-    ), name:'add_resident'
+    @render 'add_user'
+    ), name:'add_user'
 Router.route '/forgot_password', -> @render 'forgot_password'
 
 Router.route '/user/:username/edit', -> @render 'user_edit'
