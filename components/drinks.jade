@@ -55,9 +55,9 @@ template(name='drink_category')
 template(name='drink_card_template')
     .ui.card
         .image.drink_card.pointer
-            img.ui.image(src="{{c.url picture width=400 height=400 crop='fill'}}")
+            img.ui.image(src="{{c.url image_id width=400 height=400 crop='fill'}}")
         .content
-            .header #{title}
+            .header.pointer.drink_card #{title}
         .content
             |location #{location}
             each tags
@@ -75,10 +75,9 @@ template(name='drink_page')
     with current_doc
         .ui.padded.stackable.grid.header-wrapper
             .row
-                .twelve.wide.column
+                .six.wide.column
                     h1.ui.header #{title}
-            .row
-                .four.wide.column
+                    +image_view key='image_id' label='image' direct=true
                     if can_edit
                         a.ui.icon.button(href="/drink/#{_id}/edit" title='edit')
                             +i name='settings'
@@ -86,12 +85,28 @@ template(name='drink_page')
                     +array_view key='location_tags' label='location tags' icon='marker' direct=true
                     +array_view key='date_tags' label='date tags' icon='drinks' direct=true
                     div
-                    +voting
                     +comments
-                .twelve.wide.column
+                .ten.wide.column
                     +youtube_view key='youtube_id' label='youtube id' direct=true
                     +html_view key='description' direct=true
-
+                    +beer_info
+                    .ui.segment
+                        .ui.header 
+                            +i name='clock'
+                            |recent orders
+                    .ui.segment
+                        .ui.header 
+                            +i name='user-shield'
+                            |staff actions
+                        +boolean_edit key='tapped' label='tapped' direct=true
+                        +boolean_edit key='new' label='new' direct=true
+                    .ui.segment
+                        .ui.header 
+                            +i name='ball-point-pen'
+                            |reviews
+                        .ui.button add review
+                    .ui.segment
+                        +voting_full
 
 template(name='drink_edit')
     with current_doc
@@ -99,7 +114,7 @@ template(name='drink_edit')
             .row
                 .six.wide.column
                     .ui.inline.header #{title}
-                    a.ui.large.basic.icon.button(href="/drink/#{_id}")
+                    a.ui.large.basic.icon.button(href="/drink/#{_id}/view")
                         i.big.green.checkmark.icon
                     .ui.basic.icon.button.delete_drink_item
                         i.red.remove.icon
@@ -109,3 +124,20 @@ template(name='drink_edit')
                 .ten.wide.column
                     +youtube_edit key='youtube_id' label='youtube id' direct=true
                     +html_edit key='description' direct=true
+
+
+
+template(name='beer_info')
+    .ui.segment
+        .ui.header 
+            +i name='info'
+            |info
+        .ui.list
+            .item abv #{abv}
+            .item glass price $#{glass_price}
+            .item flight price $#{flight_price}
+            .item ibu
+        with type_doc
+            .ui.header #{title}
+        with company_doc
+            .ui.header #{title}

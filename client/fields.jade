@@ -82,14 +82,14 @@ template(name='icolor')
 
 template(name='i')
     //- img(src="https://img.icons8.com/color/48/000000/#{name}.png" class=classes title=title)
-    img(src="https://img.icons8.com/cotton/128/000000/#{name}.png" class=classes title=title)
+    img(src="https://img.icons8.com/dusk/64/000000/#{name}.png" class=classes title=title)
     //- img(src="https://img.icons8.com/pastel-glyph/64/000000/#{name}.png" class=classes title=title)
     //- img(src="https://img.icons8.com/office/48/000000/#{name}.png" class=classes title=title)
     //- img(src="https://img.icons8.com/ultraviolet/48/000000/#{name}.png" class=classes title=title)
 
 template(name='ismall')
     //- img(src="https://img.icons8.com/color/24/000000/#{name}.png" class=classes title=title)
-    img(src="https://img.icons8.com/pastel-glyph/24/000000/#{name}.png" class=classes title=title)
+    img(src="https://img.icons8.com/cotton/24/000000/#{name}.png" class=classes title=title)
     //- img(src="https://img.icons8.com/ultraviolet/24/000000/#{name}.png" class=classes title=title)
 
 template(name='iblue')
@@ -501,7 +501,7 @@ template(name='number_edit')
     div
     if icon
         +ismall name=icon
-    .ui.tiny.header
+    .ui.tiny.inline.header
             //- i.grey.icon(class=icon)
         if title
             |#{title}
@@ -536,7 +536,7 @@ template(name='float_edit')
     div
     if icon
         +ismall name=icon
-    .ui.tiny.header
+    .ui.tiny.inline.header
             //- i.grey.icon(class=icon)
         if title
             |#{title}
@@ -962,7 +962,7 @@ template(name='single_doc_edit')
             .ui.large.label
                 |#{first_name} #{last_name} #{title}
     if single_doc_value
-        .ui.header #{single_doc_value}
+        .ui.inline.header #{single_doc_value}
     if doc_results
         .ui.attached.smoothed.segment
             .ui.middle.aligned.selection.animated.list

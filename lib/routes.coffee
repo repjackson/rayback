@@ -65,12 +65,22 @@ Router.route "/shop", (->
 
 Router.route "/drinks/:category_slug", (->
     @layout 'layout'
-    @render 'drinks'
-    ), name:'drinks'
+    @render 'drink_category'
+    ), name:'drink_category'
 Router.route "/drink_categories", (->
     @layout 'layout'
     @render 'drink_categories'
     ), name:'drink_categories'
+
+
+Router.route "/drink/:doc_id/view", (->
+    @layout 'layout'
+    @render 'drink_page'
+    ), name:'drinks'
+Router.route "/drink/:doc_id/edit", (->
+    @layout 'layout'
+    @render 'drink_edit'
+    ), name:'drink_edit'
 
 
 Router.route '/shop/:product_id/daily_calendar/:month/:day/:year/', -> @render 'product_day'

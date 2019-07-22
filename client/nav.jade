@@ -7,20 +7,20 @@ template(name='nav')
                 i.big.loading.grey.yin.yang.icon
         else
             a.item(href='/home' class="{{isActivePath '/home'}}")
-                img.ui.mini.image(src="{{c.url 'mza92t30buvsuc72ogks' width=300 height=300 gravity='face' crop='fill'}}")
+                img.ui.mini.image(src="{{c.url 'rayback_logo' width=300 height=300 gravity='face' crop='fill'}}")
                 //- i.sitemap.large.icon
         if is_admin
             a.item.set_model(href='/m/model' class="{{isActivePath '/m/model'}} loading")
                 i.sitemap.large.icon
         if is_staff
             a.icon.item(href='/staff' class="{{isActivePath '/staff'}}" title='staff')
-                +i name='severity'
+                +i name='employee-card'
             a.icon.item(href='/admin' class="{{isActivePath '/admin'}}" title='admin')
                 +i name='user-shield'
         a.icon.item(href='/dashboard' class="{{isActivePath '/dashboard'}}" title='dashboard')
             +i name='dashboard'
         a.icon.item.set_food_truck(href='/m/food_truck' class="{{isActivePath '/m/food_truck'}} #{loading_class}" title='food')
-            +i name='food-truck'
+            +i name='truck'
         //- a.icon.item.set_food(href='/m/food' class="{{isActivePath '/m/food'}}" title='food')
         //-     +i name='meal'
         a.icon.item.set_drinks(href='/m/drink' class="{{isActivePath '/m/drink'}} #{loading_class}" title='food')

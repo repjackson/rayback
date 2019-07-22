@@ -2,7 +2,7 @@ template(name='delta')
     with current_model
         .ui.stackable.padded.grid
             .row
-                .six.wide.column
+                .four.wide.column
                     .ui.inline.header
                         //- i.icon(class=icon)
                         +i name=icon
@@ -48,12 +48,12 @@ template(name='delta')
                     div
                     each sorted_facets
                         +facet
-                .ten.wide.column.scrolling
+                .twelve.wide.column
                     //- .ui.inline.header
                     //-     |sort by
                     //- .ui.button
                     //- .ui.stackable.four.column.grid
-                    .ui.three.stackable.cards
+                    .ui.four.stackable.cards
                         each current_delta.result_ids
                             //- .column
                             +delta_result

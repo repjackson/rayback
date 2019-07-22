@@ -35,7 +35,7 @@ if Meteor.isClient
         'click .drink_card': ->
             Docs.update @_id,
                 $inc:views:1
-            Router.go "/drink/#{@_id}"
+            Router.go "/drink/#{@_id}/view"
 
 
     Template.drink_page.onCreated ->
@@ -57,3 +57,10 @@ if Meteor.isClient
             Docs.update Router.current().params.doc_id,
                 $pull:
                     members: Meteor.user().username
+
+
+
+    Template.beer_info.onCreated ->
+        console.log @
+        console.log Template.parentData()
+        # @autorun => Meteor.subscribe 'doc', Router.current().params.doc_id
