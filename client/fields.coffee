@@ -285,7 +285,7 @@ Template.pdf_edit.events
 Template.array_edit.events
     'keyup .new_element': (e,t)->
         if e.which is 13
-            element_val = t.$('.new_element').val().trim()
+            element_val = t.$('.new_element').val().trim().toLowerCase()
             if @direct
                 parent = Template.parentData()
             else
@@ -767,8 +767,6 @@ Template.single_doc_edit.onCreated ->
     @doc_results = new ReactiveVar
 Template.single_doc_edit.helpers
     doc_results: ->Template.instance().doc_results.get()
-
-Template.single_doc_edit.helpers
     single_doc_value: ->
         # console.log @
         # console.log Template.currentData()
@@ -780,7 +778,6 @@ Template.single_doc_edit.helpers
                 # console.log @key
                 console.log referenced_doc
                 referenced_doc["#{@lookup_field}"]
-
 
     choices: ->
         if @ref_model

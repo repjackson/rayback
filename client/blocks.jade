@@ -197,9 +197,9 @@ template(name='voting_full')
     if points
         strong #{points}
     .ui.icon.compact.small.button.upvote(class=upvote_class title='upvote')
-        +i name='thumb-up' classes='ui avatar image'
+        +i name='chevron-up' classes='ui avatar image'
     .ui.icon.compact.small.button.downvote(title='downvote' class=downvote_class)
-        +i name='thumbs-down' classes='ui avatar image'
+        +i name='chevron-down' classes='ui avatar image'
     if upvoter_ids
         .ui.small.header upvoters
         each upvoter_ids

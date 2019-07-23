@@ -243,8 +243,8 @@ if Meteor.isClient
 
 
     Template.voting_full.helpers
-        upvote_class: -> if @upvoter_ids and Meteor.userId() in @upvoter_ids then 'green' else 'outline'
-        downvote_class: -> if @downvoter_ids and Meteor.userId() in @downvoter_ids then 'red' else 'outline'
+        upvote_class: -> if @upvoter_ids and Meteor.userId() in @upvoter_ids then 'green' else ''
+        downvote_class: -> if @downvoter_ids and Meteor.userId() in @downvoter_ids then 'red' else ''
 
     Template.voting_full.events
         'click .upvote': ->

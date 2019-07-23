@@ -307,9 +307,10 @@ template(name='html_view')
         //-     |#{this}
         |!{field_value}
     //- +call_watson mode='html'
-    if parent.watson
-        with parent
-            +watson_view
+    if is_dev
+        if parent.watson
+            with parent
+                +watson_view
 
 
 template(name='document_edit')
