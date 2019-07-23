@@ -2,12 +2,10 @@ if Meteor.isClient
     Template.drink_categories.onCreated ->
         @autorun -> Meteor.subscribe 'docs', selected_tags.array(), 'drink'
         @autorun -> Meteor.subscribe 'model_docs', 'drink_category'
-
     Template.drink_categories.helpers
         drink_items: ->
             Docs.find
                 model:'drink'
-
         drink_categories: ->
             Docs.find
                 model:'drink_category'
@@ -61,6 +59,34 @@ if Meteor.isClient
 
 
     Template.beer_info.onCreated ->
-        console.log @
-        console.log Template.parentData()
+        # console.log @
+        # console.log Template.parentData()
         # @autorun => Meteor.subscribe 'doc', Router.current().params.doc_id
+
+
+
+    Template.category_selector.onCreated ->
+        @autorun -> Meteor.subscribe 'model_docs', 'drink_category'
+    Template.category_selector.helpers
+        drink_categories: ->
+            Docs.find
+                model:'drink_category'
+        category_class: ->
+            # console.log @
+            drink = Docs.findOne Router.current().params.doc_id
+            if @_id in drink.category_ids then 'active' else ''
+    Template.category_selector.events
+        'click .select_category':->
+            drink = Docs.findOne Router.current().params.doc_id
+            console.log Template.parentData()
+            console.log @
+            if drink.category_ids
+                if @_id in drink.category_ids
+                    Docs.update drink._id,
+                        $pull:category_ids:@_id
+                else
+                    Docs.update drink._id,
+                        $addToSet:category_ids:@_id
+            else
+                Docs.update drink._id,
+                    $addToSet:category_ids:@_id

@@ -3,8 +3,10 @@ template(name='nav')
         //- a.toggle_sidebar.icon.item.sidebar_on
         //-     i.large.sidebar.icon
         if is_loading
-            .icon.item
-                i.big.loading.grey.yin.yang.icon
+            //- .icon.item
+            //-     i.big.loading.grey.yin.yang.icon
+            a.item(href='/home' class="{{isActivePath '/home'}}")
+                img.ui.mini.image.rotate(src="{{c.url 'rayback_logo' width=300 height=300 gravity='face' crop='fill'}}")
         else
             a.item(href='/home' class="{{isActivePath '/home'}}")
                 img.ui.mini.image(src="{{c.url 'rayback_logo' width=300 height=300 gravity='face' crop='fill'}}")
@@ -35,6 +37,8 @@ template(name='nav')
             +i name='gallery'
         a.icon.item(href='/videos' class="{{isActivePath '/videos'}} #{loading_class}" title='video')
             +i name='video'
+        a.icon.item(href='/menu' class="{{isActivePath '/menu'}} #{loading_class}" title='menu')
+            +i name='restaurant-menu'
         //- a.item.set_marketplace(href='/m/marketplace' class="{{isActivePath '/m/marketplace'}}")
         //-     +i name='shop'
         .right.menu

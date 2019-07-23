@@ -98,8 +98,8 @@ template(name='drink_page')
                         .ui.header 
                             +i name='user-shield'
                             |staff actions
-                        +boolean_edit key='tapped' label='tapped' direct=true
-                        +boolean_edit key='new' label='new' direct=true
+                        +boolean_edit key='tapped' label='tapped' icon='no-alcohol' direct=true
+                        +boolean_edit key='new' label='new' icon='new' direct=true
                     .ui.segment
                         .ui.header 
                             +i name='ball-point-pen'
@@ -111,8 +111,8 @@ template(name='drink_page')
 template(name='drink_edit')
     with current_doc
         .ui.padded.stackable.grid.header-wrapper
-            .row
-                .six.wide.column
+            .three.column.row
+                .column
                     .ui.inline.header #{title}
                     a.ui.large.basic.icon.button(href="/drink/#{_id}/view")
                         i.big.green.checkmark.icon
@@ -121,22 +121,44 @@ template(name='drink_edit')
                     +text_edit key='title' icon='header' direct=true
                     +array_edit key='tags' icon='tags' direct=true
                     +array_edit key='location_tags' label='location tags' icon='marker' direct=true
-                .ten.wide.column
-                    +youtube_edit key='youtube_id' label='youtube id' direct=true
+                    +float_edit key='abv' label='abv' icon='test-tube' direct=true
+                    +number_edit key='ibu' label='ibu' icon='volume' direct=true
+                    +number_edit key='flight_price' label='flight price' icon='money' direct=true
+                    +number_edit key='glass_price' label='glass price' icon='money' direct=true
+                .column
+                    +image_edit key='image_id' label='image' direct=true
                     +html_edit key='description' direct=true
+                .column
+                    +boolean_edit key='tapped' label='tapped' icon='no-alcohol' direct=true
+                    +boolean_edit key='new' label='new' icon='new' direct=true
+                    +category_selector
 
 
+template(name='category_selector')
+    .ui.header Drink Category
+    each drink_categories
+        .ui.large.button.select_category(class=category_class)
+            +i name=icon
+            div
+            |#{title}
 
 template(name='beer_info')
     .ui.segment
         .ui.header 
             +i name='info'
             |info
-        .ui.list
-            .item abv #{abv}
-            .item glass price $#{glass_price}
-            .item flight price $#{flight_price}
-            .item ibu
+        .ui.statistic
+            .value #{abv}
+            .label abv
+        .ui.statistic
+            .value $#{glass_price}
+            .label glass price
+        .ui.statistic
+            .value $#{flight_price}
+            .label flight price
+        .ui.statistic
+            .value #{ibu}
+            .label ibu
         with type_doc
             .ui.header #{title}
         with company_doc

@@ -7,7 +7,7 @@ template(name='staff')
                     |staff dashboard
             .ui.four.wide.column
                 .ui.header 
-                    +i name='clock'
+                    +i name='birthday'
                     |legal age to drink
             .ui.four.wide.column
                 .ui.header 
@@ -90,7 +90,7 @@ template(name='doc_list_item')
         
         
 template(name='drink_item')
-    a.item(href="/drink/#{_id}/")
+    a.item(href="/drink/#{_id}/view")
         img.ui.avatar.image(src="{{c.url image_id width=100 height=100 gravity='face' crop='fill'}}")
         |#{title}
         

@@ -13,7 +13,7 @@ template(name='gallery')
                             
 template(name='image_card_template')
     //- .ui.card
-    .ui.stackable.grid.segment.image_item
+    .ui.stackable.grid.segment.pointer.image_item
         .eight.wide.column
             img.ui.rounded.image(src="{{c.url image_id height=200 width=300 crop='lpad'}}")
         .eight.wide.column

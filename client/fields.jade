@@ -81,15 +81,15 @@ template(name='icolor')
     img(src="https://img.icons8.com/color/48/000000/#{name}.png" class=classes title=title)
 
 template(name='i')
-    //- img(src="https://img.icons8.com/color/48/000000/#{name}.png" class=classes title=title)
-    img(src="https://img.icons8.com/dusk/64/000000/#{name}.png" class=classes title=title)
+    img(src="https://img.icons8.com/color/48/000000/#{name}.png" class=classes title=title)
+    //- img(src="https://img.icons8.com/dusk/64/000000/#{name}.png" class=classes title=title)
     //- img(src="https://img.icons8.com/pastel-glyph/64/000000/#{name}.png" class=classes title=title)
     //- img(src="https://img.icons8.com/office/48/000000/#{name}.png" class=classes title=title)
     //- img(src="https://img.icons8.com/ultraviolet/48/000000/#{name}.png" class=classes title=title)
 
 template(name='ismall')
-    //- img(src="https://img.icons8.com/color/24/000000/#{name}.png" class=classes title=title)
-    img(src="https://img.icons8.com/cotton/24/000000/#{name}.png" class=classes title=title)
+    img(src="https://img.icons8.com/color/24/000000/#{name}.png" class=classes title=title)
+    //- img(src="https://img.icons8.com/cotton/24/000000/#{name}.png" class=classes title=title)
     //- img(src="https://img.icons8.com/ultraviolet/24/000000/#{name}.png" class=classes title=title)
 
 template(name='iblue')
@@ -342,6 +342,7 @@ template(name='document_view')
     |!{referenced_document.content}
         
 template(name='text_edit')
+    div
     if icon
         +ismall name=icon
     .ui.tiny.inline.header
@@ -886,10 +887,10 @@ template(name='youtube_view')
 
 template(name='boolean_edit')
     div
+    if icon
+        //- i.icon(class=icon)
+        +ismall name=icon classes='ui inline image'
     .ui.tiny.inline.header
-        if icon
-            //- i.icon(class=icon)
-            +ismall name=icon classes='ui inline mini image'
         if title
             |#{title}
         else if label
